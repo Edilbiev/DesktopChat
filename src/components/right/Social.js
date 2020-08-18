@@ -19,7 +19,7 @@ function Social() {
             {contactInfo.socials.instagram}
           </div>
         )}
-        {contactInfo.socials.twitter === undefined ? null : (
+        {contactInfo.socials.twitter && (
           <div className="social-item">
             <div className="social-icon">
               <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -27,7 +27,7 @@ function Social() {
             {contactInfo.socials.twitter}
           </div>
         )}
-        {contactInfo.socials.facebook === undefined ? null : (
+        {contactInfo.socials.facebook && (
           <div className="social-item">
             <div className="social-icon">
               <i className="fa fa-facebook" aria-hidden="true"></i>

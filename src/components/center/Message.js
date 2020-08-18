@@ -24,19 +24,19 @@ function Message() {
     <>
       {chat.map((message) => {
         if (message.type === "info") {
-          return <InfoMessage text={message.content} />;
+          return <InfoMessage text={message.content} key={message._id} />;
         }
         if (message.toUserId === myId) {
           return (
             <MessageTo
               message={message}
               contactInfo={contactInfo}
-              key={chat._id}
+              key={message._id}
             />
           );
         }
 
-        return <MessageFrom message={message} key={chat._id} />;
+        return <MessageFrom message={message} key={message._id} />;
       })}
     </>
   );

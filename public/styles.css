@@ -122,8 +122,6 @@ button:hover {
 .recent-chats-time {
     font-size: 12px;
     color: #7A7B7B;
-    display: flex;
-    align-items: center;
 }
 
 .recent-chat-skeleton {
