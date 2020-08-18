@@ -1,23 +1,29 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { chatLoaded } from "../../redux/actions";
+import DropdownMenu from "./DropdownMenu";
 
 function Contact({ fullname, lastMessage, _id }) {
   const myId = useSelector((state) => state.profile._id);
   const opened = useSelector((state) => state.chat.opened);
   const dispatch = useDispatch();
 
-  const [dropdown, setDropdown] = useState(false);
-  const handleClick = () => {
-    setDropdown(!dropdown)
-  }
-  console.log('RENDER');
+  const [showDots, setShowDots] = useState(false);
 
+  const handleMouseEnter = () => {
+    setShowDots(true)
+  };
+
+  const handleMouseLeave = () => {
+    setShowDots(false)
+  };
 
   return (
     <div
       className={_id === opened ? "chats-item-opened" : "chats-item"}
       onClick={() => dispatch(chatLoaded(myId, _id))}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="avatar">{fullname[0]}</div>
       <div>
@@ -27,10 +33,7 @@ function Contact({ fullname, lastMessage, _id }) {
         </div>
       </div>
       <div className="recent-chats-time">
-        <button className="dots" onClick={handleClick}>
-          <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-        </button>
-        <p>5 min</p>
+        {showDots ? <DropdownMenu/> : '5 min'}
       </div>
     </div>
   );

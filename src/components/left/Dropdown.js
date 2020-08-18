@@ -1,8 +1,12 @@
 import React from 'react';
 
-function Dropdown({ children }) {
+function Dropdown({ open, children }) {
+  if (open === false) {
+    return null
+  }
+
   return (
-    <div>{children}</div>
+    <div className="dropdown">{children}</div>
   );
 }
 

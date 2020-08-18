@@ -2,7 +2,7 @@ import React from 'react';
 
 function DropdownItem({ children }) {
   return (
-    <div>{children}</div>
+    <div className="dropdown-item">{children}</div>
   );
 }
 
