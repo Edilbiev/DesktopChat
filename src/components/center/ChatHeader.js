@@ -2,44 +2,31 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   messageSearchStringOpened,
-  messageSearchStringSet,
   settingsBarHandled,
 } from "../../redux/actions";
+import MessageSearch from "./MessageSearch";
+import OnlineIndicator from "./OnlineIndicator";
 
 function ChatHeader() {
   const loading = useSelector((state) => state.chat.loading);
-  const isMessageSearchStringOpened = useSelector(
-    (state) => state.application.isMessageSearchStringOpened
-  );
-  const searchString = useSelector(
-    (state) => state.application.messageSearchString
-  );
+
   const opened = useSelector((state) => state.chat.opened);
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
   const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    dispatch(messageSearchStringSet(event.target.value));
-  };
+  const handleClick = () => {
+    dispatch(messageSearchStringOpened())
+  }
 
   return (
     <div className="chat-header">
       <div>
-        <button onClick={() => dispatch(messageSearchStringOpened())}>
+        <button onClick={handleClick}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>
-        <input
-          autoFocus={true}
-          value={searchString}
-          onChange={handleChange}
-          className={
-            isMessageSearchStringOpened
-              ? "message-search-opened"
-              : "message-search-closed"
-          }
-        />
+        <MessageSearch />
       </div>
       <div>
         {loading ? (
@@ -48,7 +35,10 @@ function ChatHeader() {
             Updating...
           </div>
         ) : (
-          <div>{contactInfo.fullname}</div>
+          <div className="chat-header-name">
+            {contactInfo.fullname}
+            <OnlineIndicator />
+          </div>
         )}
       </div>
       <div>

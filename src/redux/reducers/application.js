@@ -23,7 +23,7 @@ export default function application(state = initialState, action) {
     case "message/search/opened":
       return {
         ...state,
-        isMessageSearchStringOpened: true,
+        isMessageSearchStringOpened: !state.isMessageSearchStringOpened,
       };
 
     case "message/search/set":

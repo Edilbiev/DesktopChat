@@ -13,8 +13,9 @@ function MessageInput() {
   };
 
   const handleKeyDown = (event) => {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && event.target.value !== '') {
       dispatch(messageSent(myId, opened, "text", message));
+      setMessage(event.target.value = '')
     }
   };
 

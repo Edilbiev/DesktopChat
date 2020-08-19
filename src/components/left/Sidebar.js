@@ -1,12 +1,12 @@
 import React from "react";
-import Search from "./Search";
+import ContactSearch from "./ContactSearch";
 import RecentChats from "./RecentChats";
 
 function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-inner">
-        <Search />
+        <ContactSearch />
         <RecentChats />
       </div>
     </div>

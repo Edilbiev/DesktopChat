@@ -56,12 +56,20 @@ button:hover {
 .search-contact {
   height: 40px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 40px;
   box-sizing: border-box;
-  color: #cbceda;
   border-radius: 5px;
   margin-bottom: 35px;
   box-shadow: 0 0 5px 0 #e7eaed;
+  color: rgb(118, 118, 118);
+}
+
+.search-contact-icon {
+  position: absolute;
+  top: 30px;
+  left: 35px;
+  font-size: 10px;
+  color: rgb(118, 118, 118);
 }
 
 .chats-item,
@@ -163,6 +171,19 @@ button:hover {
   color: #a4b5cc;
 }
 
+.chat-header-name {
+  display: flex;
+  align-items: center;
+}
+
+.online-indicator {
+  background-color: #55C662;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
 .chat-window {
   flex: 3;
   height: 100vh;
@@ -190,7 +211,7 @@ button:hover {
 .message-search-opened {
   position: absolute;
   top: 15px;
-  left: 340px;
+  left: 375px;
   width: 0;
   box-shadow: 0 0 5px 0 #e7eaed;
   transition: 0.5s;
@@ -248,8 +269,8 @@ button:hover {
 
 .message-input input {
   padding: 25px 0;
-  color: #a7b8ce;
   width: 90%;
+  color: rgb(118, 118, 118);
 }
 
 .message-input button {
@@ -328,4 +349,8 @@ button:hover {
 .dots {
   font-size: 22px;
   color: #7a7b7b;
+}
+
+.dots:hover {
+  color: #e7eaed;
 }
