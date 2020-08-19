@@ -5,7 +5,7 @@ import {
   settingsBarHandled,
 } from "../../redux/actions";
 import MessageSearch from "./MessageSearch";
-import OnlineIndicator from "./OnlineIndicator";
+import OnlineIndicator from "../common/OnlineIndicator";
 
 function ChatHeader() {
   const loading = useSelector((state) => state.chat.loading);
@@ -37,7 +37,7 @@ function ChatHeader() {
         ) : (
           <div className="chat-header-name">
             {contactInfo.fullname}
-            <OnlineIndicator />
+            <OnlineIndicator style="online-indicator-header" />
           </div>
         )}
       </div>

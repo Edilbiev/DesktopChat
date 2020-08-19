@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { messageSent } from "../../redux/actions";
+import MessageSendButtons from "./MessageSendButtons";
 
 function MessageInput() {
   const myId = useSelector((state) => state.profile._id);
@@ -26,12 +27,7 @@ function MessageInput() {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <button>
-        <i className="fa fa-paperclip" aria-hidden="true"></i>
-      </button>
-      <button>
-        <i className="fa fa-smile-o" aria-hidden="true"></i>
-      </button>
+      <MessageSendButtons />
     </div>
   );
 }

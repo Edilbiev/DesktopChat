@@ -176,12 +176,19 @@ button:hover {
   align-items: center;
 }
 
-.online-indicator {
+.online-indicator-header, .online-indicator-contact {
   background-color: #55C662;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   margin-left: 8px;
+}
+
+.online-indicator-contact {
+  position: absolute;
+  left: 60px;
+  height: 6px;
+  width: 6px;
 }
 
 .chat-window {
