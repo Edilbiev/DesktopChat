@@ -10,7 +10,7 @@
   height: 100vh;
 }
 
-input {
+input, textarea {
   border: none;
   outline: none;
 }
@@ -271,10 +271,11 @@ button:hover {
 }
 
 .message-input {
-  border-top: 0.5px solid #e7eaed;
+  border-top: 1px solid #e7eaed;
+  display: flex;
 }
 
-.message-input input {
+.message-textarea {
   padding: 25px 0;
   width: 90%;
   color: rgb(118, 118, 118);

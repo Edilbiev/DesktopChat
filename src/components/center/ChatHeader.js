@@ -16,14 +16,18 @@ function ChatHeader() {
   );
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleShowSearchString = () => {
     dispatch(messageSearchStringOpened())
+  }
+
+  const handleShowSettings = () => {
+    dispatch(settingsBarHandled())
   }
 
   return (
     <div className="chat-header">
       <div>
-        <button onClick={handleClick}>
+        <button onClick={handleShowSearchString}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>
         <MessageSearch />
@@ -37,12 +41,12 @@ function ChatHeader() {
         ) : (
           <div className="chat-header-name">
             {contactInfo.fullname}
-            <OnlineIndicator style="online-indicator-header" />
+            <OnlineIndicator customClass="online-indicator-header" />
           </div>
         )}
       </div>
       <div>
-        <button onClick={() => dispatch(settingsBarHandled())}>
+        <button onClick={handleShowSettings}>
           <i className="fa fa-cog" aria-hidden="true"></i>
         </button>
       </div>

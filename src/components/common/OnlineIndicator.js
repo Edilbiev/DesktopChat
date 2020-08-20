@@ -1,7 +1,7 @@
 import React from "react";
 
-function OnlineIndicator( {style} ) {
-  return <div className={style} />;
+function OnlineIndicator( {customClass} ) {
+  return <div className={customClass} />;
 }
 
 export default OnlineIndicator;

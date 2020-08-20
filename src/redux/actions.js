@@ -1,3 +1,5 @@
+import {scrollChatToBottom} from "../utils/dom";
+
 export function profileLoaded() {
   return (dispatch) => {
     dispatch({ type: "profile/load/started" });
@@ -42,6 +44,8 @@ export function chatLoaded(myId, contactId) {
           type: "chat/load/success",
           payload: json,
         });
+
+        scrollChatToBottom()
       });
   };
 }
@@ -64,6 +68,8 @@ export function messageSent(myId, contactId, type, content) {
           type: "message/send/succeed",
           payload: json,
         });
+
+       scrollChatToBottom()
       });
   };
 }

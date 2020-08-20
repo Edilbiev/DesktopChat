@@ -4,7 +4,7 @@ import { chatLoaded } from "../../redux/actions";
 import DropdownMenu from "./DropdownMenu";
 import OnlineIndicator from "../common/OnlineIndicator";
 
-function Contact({ fullname, lastMessage, _id }) {
+function Contact({ fullname, lastMessage, _id, online }) {
   const myId = useSelector((state) => state.profile._id);
   const opened = useSelector((state) => state.chat.opened);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function Contact({ fullname, lastMessage, _id }) {
   const handleMouseLeave = () => {
     setShowDots(false)
   };
-
+  //TODO вынести аватар в компонент с пропсом онлайн
   return (
     <div
       className={_id === opened ? "chats-item-opened" : "chats-item"}
@@ -33,7 +33,7 @@ function Contact({ fullname, lastMessage, _id }) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="avatar">
-        <OnlineIndicator style="online-indicator-contact" />
+        <OnlineIndicator customClass="online-indicator-contact" />
         {fullname[0]}
       </div>
       <div>

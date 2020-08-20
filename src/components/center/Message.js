@@ -10,13 +10,14 @@ function Message() {
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
-  const searchString = useSelector(
-    (state) => state.application.messageSearchString
-  );
+
   const chat = useSelector((state) => {
+    const { messageSearchString } = state.application;
     return state.chat.items.filter(
       (item) =>
-        item.content.toUpperCase().indexOf(searchString.toUpperCase()) !== -1
+        item.content
+          .toUpperCase()
+          .indexOf(messageSearchString.toUpperCase()) !== -1
     );
   });
 

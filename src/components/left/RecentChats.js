@@ -16,6 +16,7 @@ function RecentChats() {
   const loading = useSelector((state) => state.contacts.loading);
   const skeletonList = Array(20).fill(1);
 
+  //TODO gkjhegkjlhh
   return loading
     ? skeletonList.map((_, index) => <RecentChatSkeleton lines={20} key={index} />)
     : items.map((item) => <Contact key={item._id} {...item} />);

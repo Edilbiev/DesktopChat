@@ -4,9 +4,11 @@ import { contactSearchStringSet } from "../../redux/actions";
 
 function ContactSearch() {
   const loading = useSelector((state) => state.contacts.loading);
+
   const searchString = useSelector(
     (state) => state.application.contactSearchString
   );
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -15,7 +17,7 @@ function ContactSearch() {
 
   return (
     <>
-      <i className="fa fa-search search-contact-icon" aria-hidden="true"></i>
+      <i className="fa fa-search search-contact-icon" aria-hidden="true"/>
       <input
         disabled={loading}
         placeholder="Search contact"

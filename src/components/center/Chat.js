@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useRef} from "react";
 import Message from "./Message";
 
 function Chat() {
   return (
-    <div className="chat">
+    <div className="chat" id="chat-window">
       <div className="chat-inner">
         <Message />
       </div>

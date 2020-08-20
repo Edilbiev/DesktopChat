@@ -4,6 +4,7 @@ import {messageSearchStringSet} from "../../redux/actions";
 
 function MessageSearch() {
   const dispatch = useDispatch();
+
   const isMessageSearchStringOpened = useSelector(
     (state) => state.application.isMessageSearchStringOpened
   );
