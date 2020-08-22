@@ -48,6 +48,8 @@ function MessageInput() {
     <div className="message-input">
       <div className="message-textarea">
         <textarea
+          wrap="hard"
+          cols="20"
           value={message}
           placeholder="Write a message"
           onChange={handleChange}

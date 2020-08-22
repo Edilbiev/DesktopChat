@@ -33,7 +33,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="avatar">
-        <OnlineIndicator customClass="online-indicator-contact" />
+        {online && <OnlineIndicator customClass="online-indicator-contact" />}
         {fullname[0]}
       </div>
       <div>

@@ -34,7 +34,7 @@ function ChatHeader() {
     <div className="chat-header">
       <div>
         <button onClick={handleShowSearchString}>
-          <i className="fa fa-search" aria-hidden="true"></i>
+          <i className="material-icons">search</i>
         </button>
         <MessageSearch />
       </div>
@@ -47,13 +47,15 @@ function ChatHeader() {
         ) : (
           <div className="chat-header-name">
             {contactInfo.fullname}
-            <OnlineIndicator customClass="online-indicator-header" />
+            {contactInfo.online &&
+              <OnlineIndicator customClass="online-indicator-header" />
+            }
           </div>
         )}
       </div>
       <div>
         <button onClick={handleShowSettings}>
-          <i className="fa fa-cog" aria-hidden="true"></i>
+          <i className="material-icons">settings</i>
         </button>
       </div>
     </div>
