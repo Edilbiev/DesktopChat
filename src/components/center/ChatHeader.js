@@ -6,6 +6,7 @@ import {
 } from "../../redux/actions";
 import MessageSearch from "./MessageSearch";
 import OnlineIndicator from "../common/OnlineIndicator";
+import {useHotkeys} from "react-hotkeys-hook";
 
 function ChatHeader() {
   const loading = useSelector((state) => state.chat.loading);
@@ -23,6 +24,11 @@ function ChatHeader() {
   const handleShowSettings = () => {
     dispatch(settingsBarHandled())
   }
+
+  useHotkeys('ctrl+p', (event) => {
+    event.preventDefault()
+    handleShowSettings()
+  });
 
   return (
     <div className="chat-header">

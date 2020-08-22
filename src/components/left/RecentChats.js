@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Contact from "./Contact";
 import RecentChatSkeleton from "../common/skeletons/RecentChatsSkeleton";
+import SkeletonList from "../common/skeletons/SkeletonList";
 
 function RecentChats() {
   const items = useSelector(({ application, contacts }) => {
@@ -14,11 +15,9 @@ function RecentChats() {
   });
 
   const loading = useSelector((state) => state.contacts.loading);
-  const skeletonList = Array(20).fill(1);
 
-  //TODO gkjhegkjlhh
   return loading
-    ? skeletonList.map((_, index) => <RecentChatSkeleton lines={20} key={index} />)
+    ? <SkeletonList />
     : items.map((item) => <Contact key={item._id} {...item} />);
 }
 

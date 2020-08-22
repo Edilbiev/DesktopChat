@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { messageSent } from "../../redux/actions";
 import MessageSendButtons from "./MessageSendButtons";
-import {useHotkeys} from "react-hotkeys-hook";
+import { useHotkeys } from "react-hotkeys-hook";
 
 function MessageInput() {
   const myId = useSelector((state) => state.profile._id);
@@ -29,9 +29,9 @@ function MessageInput() {
     setMessage("")
   }
 
-  const handleClick = useCallback(() => {
+  const handleClick =() => {
     sendMessage();
-  }, [sendMessage]);
+  }
 
   const handleKeyDown = (event) => {
     if (event.keyCode === 13) {
@@ -39,21 +39,24 @@ function MessageInput() {
     }
   };
 
-  useHotkeys('shift+enter', () => {
-    alert();
-    //setMessage(message + "\n");
+  useHotkeys('shift+enter', (event) => {
+    event.preventDefault();
+    setMessage(message + "\n");
   });
 
   return (
     <div className="message-input">
-      <textarea
-        className="message-textarea"
-        value={message}
-        placeholder="Write a message"
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
-      <MessageSendButtons isTyping={message.length > 0} handleClick={handleClick} />
+      <div className="message-textarea">
+        <textarea
+          value={message}
+          placeholder="Write a message"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+      <div>
+        <MessageSendButtons isTyping={message.length > 0} handleClick={handleClick} />
+      </div>
     </div>
   );
 }

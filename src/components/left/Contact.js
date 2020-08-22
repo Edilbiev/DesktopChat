@@ -43,7 +43,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
         </div>
       </div>
       <div className="recent-chats-time">
-        {showDots ? <DropdownMenu/> : '5 min'}
+        {showDots ? <DropdownMenu/> : '9:00'}
       </div>
     </div>
   );
