@@ -20,10 +20,24 @@ export default function application(state = initialState, action) {
         settingsBarOpened: !state.settingsBarOpened,
       };
 
-    case "message/search/opened":
+    case "message/search/handled":
       return {
         ...state,
+        messageSearchString: "",
         isMessageSearchStringOpened: !state.isMessageSearchStringOpened,
+      };
+
+    case "message/search/closed":
+      return {
+        ...state,
+        messageSearchString: "",
+        isMessageSearchStringOpened: false,
+      };
+
+    case "message/search/cleared":
+      return {
+        ...state,
+        messageSearchString: "",
       };
 
     case "message/search/set":

@@ -11,7 +11,7 @@ function MessageFrom({ message }) {
       </div>
       <div className="message-time">
         {moment(message.time).format('HH:mm')}
-        <i className={message.read ? "fa fa-check read" : "fa fa-check"} aria-hidden="true"/>
+        {message.read ? <i className="material-icons">done_all</i> : <i className="material-icons">done</i>}
       </div>
     </div>
   );

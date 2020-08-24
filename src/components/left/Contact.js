@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chatLoaded } from "../../redux/actions";
+import {chatLoaded, messageSearchStringClosed} from "../../redux/actions";
 import DropdownMenu from "./DropdownMenu";
 import OnlineIndicator from "../common/OnlineIndicator";
+import Avatar from "../common/Avatar";
 
 function Contact({ fullname, lastMessage, _id, online }) {
   const myId = useSelector((state) => state.profile._id);
@@ -13,6 +14,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
 
   const handleClick = () => {
     if (_id !== opened) {
+      messageSearchStringClosed()
       dispatch(chatLoaded(myId, _id))
     }
   }
@@ -32,10 +34,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="avatar">
-        {online && <OnlineIndicator customClass="online-indicator-contact" />}
-        {fullname[0]}
-      </div>
+      <Avatar online={online} label={fullname[0]} />
       <div>
         <div>{fullname}</div>
         <div className="last-message">

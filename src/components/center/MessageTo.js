@@ -1,12 +1,13 @@
 import React from "react";
 import moment from "moment";
+import Avatar from "../common/Avatar";
 
 
 function MessageTo({ message, contactInfo }) {
   return (
     <>
       <div className="message-to">
-        <div className="message-to-avatar">{contactInfo.fullname[0]}</div>
+        <Avatar label={contactInfo.fullname[0]} size="small"/>
         <div className="message-to-text">
           {message.content}
         </div>

@@ -4,7 +4,7 @@ function MessageSendButtons({ isTyping, handleClick }) {
   return (
     <>
       <button>
-        <i className="material-icons">paperclip</i>
+        <i className="material-icons">attach_file</i>
       </button>
       {isTyping ? (
         <button onClick={handleClick}>
@@ -12,7 +12,7 @@ function MessageSendButtons({ isTyping, handleClick }) {
         </button>
       ) : (
         <button>
-          <i className="material-icons">microphone</i>
+          <i className="material-icons">mic</i>
         </button>
       )}
     </>

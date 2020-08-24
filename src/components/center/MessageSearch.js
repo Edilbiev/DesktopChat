@@ -1,6 +1,6 @@
-import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {messageSearchStringSet} from "../../redux/actions";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {messageSearchStringCleared, messageSearchStringSet} from "../../redux/actions";
 
 function MessageSearch() {
   const dispatch = useDispatch();
@@ -15,6 +15,10 @@ function MessageSearch() {
     dispatch(messageSearchStringSet(event.target.value));
   };
 
+  const handleClear = () => {
+    dispatch(messageSearchStringCleared())
+  }
+
   return (
     <div>
       <input
@@ -26,6 +30,11 @@ function MessageSearch() {
             : "message-search-closed"
         }
       />
+      {searchString === "" ? null : (
+        <button className="clear-button" onClick={handleClear}>
+          <i className="material-icons">clear</i>
+        </button>
+      )}
     </div>
   );
 }

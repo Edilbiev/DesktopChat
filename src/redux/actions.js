@@ -52,7 +52,8 @@ export function chatLoaded(myId, contactId) {
 
 export function messageSent(myId, contactId, type, content) {
   return (dispatch) => {
-    dispatch({ type: "message/send/started" });
+    const randomId = 443;
+    dispatch({ type: "message/send/started",  });
 
     fetch("http://151.248.117.7:8001/api/messages", {
       method: "POST",
@@ -66,7 +67,10 @@ export function messageSent(myId, contactId, type, content) {
       .then((json) => {
         dispatch({
           type: "message/send/succeed",
-          payload: json,
+          payload: {
+            ...json,
+            tempId: randomId
+          }
         });
 
        scrollChatToBottom()
@@ -81,10 +85,22 @@ export function contactSearchStringSet(value) {
   };
 }
 
-export function messageSearchStringOpened() {
+export function messageSearchStringHandled() {
   return {
-    type: "message/search/opened",
+    type: "message/search/handled",
   };
+}
+
+export function messageSearchStringClosed() {
+  return {
+    type: "message/search/closed"
+  }
+}
+
+export function messageSearchStringCleared() {
+  return {
+    type: "message/search/cleared"
+  }
 }
 
 export function messageSearchStringSet(value) {

@@ -13,7 +13,7 @@ function DropdownMenu(props) {
   return (
     <div className="dropdown-menu">
       <button className="dots" onClick={handleClick}>
-        <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
+        <i className="material-icons">more_horiz</i>
       </button>
       <Dropdown open={dropdown}>
         <DropdownItem>

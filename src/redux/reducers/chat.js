@@ -2,7 +2,6 @@ const initialState = {
   loading: false,
   items: [],
   opened: null,
-  sending: false,
 };
 
 export default function chat(state = initialState, action) {
@@ -25,14 +24,20 @@ export default function chat(state = initialState, action) {
     case "message/send/started":
       return {
         ...state,
-        sending: true,
       };
 
     case "message/send/succeed":
+      const { tempId } = action.payload;
+      const newItems = state.items.map(item => {
+        if(tempId === item.tempId) {
+          return action.payload
+        }
+
+        return item;
+      })
       return {
         ...state,
-        items: [...state.items, action.payload],
-        sending: false,
+        items: newItems,
       };
 
     default:

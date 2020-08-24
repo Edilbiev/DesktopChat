@@ -40,7 +40,7 @@ function MessageInput() {
   };
 
   useHotkeys('shift+enter', (event) => {
-    event.preventDefault();
+    event.stopPropagation();
     setMessage(message + "\n");
   });
 

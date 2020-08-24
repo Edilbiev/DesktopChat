@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  messageSearchStringOpened,
+  messageSearchStringHandled,
   settingsBarHandled,
 } from "../../redux/actions";
 import MessageSearch from "./MessageSearch";
@@ -18,7 +18,7 @@ function ChatHeader() {
   const dispatch = useDispatch();
 
   const handleShowSearchString = () => {
-    dispatch(messageSearchStringOpened())
+    dispatch(messageSearchStringHandled())
   }
 
   const handleShowSettings = () => {
@@ -33,7 +33,7 @@ function ChatHeader() {
   return (
     <div className="chat-header">
       <div>
-        <button onClick={handleShowSearchString}>
+        <button onClick={handleShowSearchString} className="message-search-button">
           <i className="material-icons">search</i>
         </button>
         <MessageSearch />

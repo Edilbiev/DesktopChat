@@ -17,7 +17,7 @@ function ContactSearch() {
 
   return (
     <>
-      <i className="fa fa-search search-contact-icon" aria-hidden="true"/>
+      <i className="material-icons search-contact-icon">search</i>
       <input
         disabled={loading}
         placeholder="Search contact"
