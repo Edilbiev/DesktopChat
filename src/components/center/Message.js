@@ -3,10 +3,12 @@ import MessageTo from "./MessageTo";
 import MessageFrom from "./MessageFrom";
 import { useSelector } from "react-redux";
 import InfoMessage from "./InfoMessage";
+import MessageTest from "./MessageTest";
 
 function Message({ message }) {
   const opened = useSelector((state) => state.chat.opened);
   const myId = useSelector((state) => state.profile._id);
+  const isOutbox = message.toUserId === myId;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
@@ -16,15 +18,11 @@ function Message({ message }) {
     }
     if (message.toUserId === myId) {
       return (
-        <MessageTo
-          message={message}
-          contactInfo={contactInfo}
-          key={message._id}
-        />
+       <MessageTest message={message} type="inbox" />
       );
     }
 
-    return <MessageFrom message={message} key={message._id} />;
+    return <MessageTest message={message}/>;
 
 }
 

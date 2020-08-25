@@ -1,6 +1,7 @@
 import React from "react";
 import Message from "./Message";
 import {useSelector} from "react-redux";
+import MessageTest from "./MessageTest";
 
 function Chat() {
   const chat = useSelector((state) => {

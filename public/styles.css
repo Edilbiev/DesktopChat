@@ -177,10 +177,20 @@ button:hover {
 
 .material-icons {
   font-size: 20px!important;
-  margin: 0px!important;
+  margin: 0!important;
 }
 
-.chat-header-name {
+.negative-rotate {
+  transform: rotate(-180deg);
+  transition: .7s;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: .7s;
+}
+
+.chat-header-name, .update {
   display: flex;
   align-items: center;
 }
@@ -283,6 +293,52 @@ button:hover {
   line-height: 30px;
   border-radius: 15px;
 }
+
+/*-----------------*/
+
+.outbox-message-outer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.outbox-message {
+  color: white;
+  background-color: #632df8;
+  border-radius: 13px 13px 0 13px;
+  padding: 10px 10px 4px;
+}
+
+.message-text {
+  min-width: 100px;
+  max-width: 300px;
+  overflow-wrap: break-word;
+}
+
+.time {
+  min-width: 150px;
+  max-width: 350px;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.time .material-icons {
+  font-size: 15px!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------*/
 
 .message-to {
   display: flex;
@@ -423,4 +479,22 @@ button:hover {
 
 .dots:hover {
   color: #e7eaed;
+}
+
+
+
+.refresh {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
 }

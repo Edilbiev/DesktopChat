@@ -6,9 +6,13 @@ import {
 } from "../../redux/actions";
 import MessageSearch from "./MessageSearch";
 import OnlineIndicator from "../common/OnlineIndicator";
-import {useHotkeys} from "react-hotkeys-hook";
+import { useHotkeys } from "react-hotkeys-hook";
 
 function ChatHeader() {
+  const settingsBarOpened = useSelector(
+    (state) => state.application.settingsBarOpened
+  );
+
   const loading = useSelector((state) => state.chat.loading);
 
   const opened = useSelector((state) => state.chat.opened);
@@ -18,44 +22,54 @@ function ChatHeader() {
   const dispatch = useDispatch();
 
   const handleShowSearchString = () => {
-    dispatch(messageSearchStringHandled())
-  }
+    dispatch(messageSearchStringHandled());
+  };
 
   const handleShowSettings = () => {
-    dispatch(settingsBarHandled())
-  }
+    dispatch(settingsBarHandled());
+  };
 
-  useHotkeys('ctrl+p', (event) => {
-    event.preventDefault()
-    handleShowSettings()
+  useHotkeys("ctrl+p", (event) => {
+    event.preventDefault();
+    handleShowSettings();
   });
 
   return (
     <div className="chat-header">
       <div>
-        <button onClick={handleShowSearchString} className="message-search-button">
+        <button
+          onClick={handleShowSearchString}
+          className="message-search-button"
+        >
           <i className="material-icons">search</i>
         </button>
         <MessageSearch />
       </div>
       <div>
         {loading ? (
-          <div>
-            <i className="fa fa-refresh fa-spin" aria-hidden="true"></i>{" "}
-            Updating...
+          <div className="update">
+            <i className="material-icons refresh">autorenew</i> Updating...
           </div>
         ) : (
           <div className="chat-header-name">
             {contactInfo.fullname}
-            {contactInfo.online &&
+            {contactInfo.online && (
               <OnlineIndicator customClass="online-indicator-header" />
-            }
+            )}
           </div>
         )}
       </div>
       <div>
         <button onClick={handleShowSettings}>
-          <i className="material-icons">settings</i>
+          <i
+            className={
+              settingsBarOpened
+                ? "material-icons negative-rotate"
+                : "material-icons rotate"
+            }
+          >
+            settings
+          </i>
         </button>
       </div>
     </div>

@@ -26,7 +26,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
   const handleMouseLeave = () => {
     setShowDots(false)
   };
-  //TODO вынести аватар в компонент с пропсом онлайн
+
   return (
     <div
       className={_id === opened ? "chats-item-opened" : "chats-item"}
