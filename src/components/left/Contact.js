@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {chatLoaded, messageSearchStringClosed} from "../../redux/actions";
 import DropdownMenu from "./DropdownMenu";
-import OnlineIndicator from "../common/OnlineIndicator";
 import Avatar from "../common/Avatar";
 
 function Contact({ fullname, lastMessage, _id, online }) {
@@ -14,7 +13,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
 
   const handleClick = () => {
     if (_id !== opened) {
-      messageSearchStringClosed()
+      dispatch(messageSearchStringClosed())
       dispatch(chatLoaded(myId, _id))
     }
   }
@@ -35,7 +34,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
       onMouseLeave={handleMouseLeave}
     >
       <Avatar online={online} label={fullname[0]} />
-      <div>
+      <div className="chat-item-center">
         <div>{fullname}</div>
         <div className="last-message">
           {lastMessage.substring(0, 18) + "..."}

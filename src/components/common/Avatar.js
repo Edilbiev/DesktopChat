@@ -2,9 +2,9 @@ import React from 'react';
 import OnlineIndicator from "./OnlineIndicator";
 import PropTypes from "prop-types";
 
-function Avatar({ label, online, size }) {
+function Avatar({ label, online, size, onclick }) {
   return (
-    <div className={`avatar-size-${size}`}>
+    <div className={`avatar-size-${size}`} onClick={onclick}>
       {online && <OnlineIndicator customClass="online-indicator-contact" />}
       {label}
     </div>

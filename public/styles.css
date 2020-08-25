@@ -46,7 +46,8 @@ button:hover {
 }
 
 .sidebar-inner {
-  padding: 20px;
+  padding: 20px 15px;
+  position: relative;
 }
 
 .settings-bar-inner {
@@ -78,7 +79,6 @@ button:hover {
   margin: 3px;
   display: flex;
   background-color: #f7f8f9;
-  justify-content: space-between;
 }
 
 .chats-item:hover,
@@ -118,6 +118,7 @@ button:hover {
   margin-right: 13px;
   font-size: 13px;
   line-height: 30px;
+  cursor: pointer;
 }
 
 .avatar-size-big {
@@ -134,6 +135,11 @@ button:hover {
   font-weight: 300;
   color: #7a7b7b;
   flex: 2;
+}
+
+.chat-item-center {
+  padding: 0 7px;
+  flex: 1;
 }
 
 .recent-chats-time {
@@ -175,19 +181,23 @@ button:hover {
   align-items: center;
 }
 
+.chat-header button:hover {
+  color: #8692a3;
+}
+
 .material-icons {
   font-size: 20px!important;
   margin: 0!important;
 }
 
 .negative-rotate {
-  transform: rotate(-180deg);
-  transition: .7s;
+  transform: rotate(-90deg);
+  transition: transform .7s;
 }
 
 .rotate {
-  transform: rotate(180deg);
-  transition: .7s;
+  transform: rotate(90deg);
+  transition: transform .7s;
 }
 
 .chat-header-name, .update {
@@ -205,7 +215,7 @@ button:hover {
 
 .online-indicator-contact {
   position: absolute;
-  left: 60px;
+  left: 55px;
   height: 6px;
   width: 6px;
   border: 1px solid #f7f8f9;
@@ -296,17 +306,27 @@ button:hover {
 
 /*-----------------*/
 
-.outbox-message-outer {
+.outbox-message-outer, .inbox-message-outer {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
 }
 
-.outbox-message {
+.inbox-message-outer {
+  justify-content: flex-start;
+}
+
+.outbox-message, .inbox-message {
   color: white;
   background-color: #632df8;
   border-radius: 13px 13px 0 13px;
   padding: 10px 10px 4px;
+}
+
+.inbox-message {
+  background-color: #F1F5F9;
+  color: black;
+  border-radius: 13px 13px 13px 0;
 }
 
 .message-text {
@@ -326,6 +346,7 @@ button:hover {
 
 .time .material-icons {
   font-size: 15px!important;
+  margin-left: 2px!important;
 }
 
 

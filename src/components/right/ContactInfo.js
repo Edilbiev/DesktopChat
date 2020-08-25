@@ -12,7 +12,7 @@ function ContactInfo() {
     <div className="contact-info">
       <Avatar label={contactInfo.fullname[0]} size="big"/>
       <div>{contactInfo.fullname}</div>
-      <div className="last-message">{contactInfo.username}@mail.com</div>
+      <div className="last-message">@{contactInfo.username}</div>
       <div className="contact-info-icons">
         <button>
           <i className="material-icons">call</i>
