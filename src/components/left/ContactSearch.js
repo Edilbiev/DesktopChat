@@ -16,16 +16,19 @@ function ContactSearch() {
   };
 
   return (
-    <>
-      <i className="material-icons search-contact-icon">search</i>
-      <input
-        disabled={loading}
-        placeholder="Search contact"
-        className="search-contact"
-        value={searchString}
-        onChange={handleChange}
-      />
-    </>
+    <div className="search-contact">
+      <div className="search-contact-icon">
+        <i className="material-icons">search</i>
+      </div>
+      <div>
+        <input
+          disabled={loading}
+          placeholder="Search contact"
+          value={searchString}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
   );
 }
 

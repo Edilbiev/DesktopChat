@@ -55,20 +55,27 @@ button:hover {
 }
 
 .search-contact {
+  background-color: white;
+  display: flex;
+  align-items: center;
   height: 40px;
   width: 100%;
-  padding: 10px 40px;
+  padding: 0 10px;
   box-sizing: border-box;
   border-radius: 5px;
   margin-bottom: 35px;
   box-shadow: 0 0 5px 0 #e7eaed;
   color: rgb(118, 118, 118);
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+}
+
+.search-contact input {
+  height: 100%;
 }
 
 .search-contact-icon {
-  position: absolute;
-  top: 30px;
-  left: 35px;
   font-size: 10px;
   color: rgb(118, 118, 118);
 }
@@ -473,6 +480,7 @@ button:hover {
 
 .dropdown {
   position: absolute;
+  left: 210px;
   background-color: white;
   padding: 7px 0;
   box-shadow: 0 5px 5px 0 #e7eaed;

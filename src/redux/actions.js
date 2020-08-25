@@ -50,10 +50,23 @@ export function chatLoaded(myId, contactId) {
   };
 }
 
-export function messageSent(myId, contactId, type, content) {
-  return (dispatch) => {
-    const randomId = 443;
-    dispatch({ type: "message/send/started",  });
+function messageSentBegin(messageObject, nextTempId) {
+  return {
+    type: 'message/send/started',
+    payload: {
+      ...messageObject,
+      nextTempId
+    }
+  }
+}
+
+export function messageSent(messageObject) {
+  return async (dispatch, getState) => {
+    const { nextTempId } = getState().chat;
+
+    await dispatch(messageSentBegin(messageObject, nextTempId));
+
+    scrollChatToBottom();
 
     fetch("http://151.248.117.7:8001/api/messages", {
       method: "POST",
@@ -61,7 +74,7 @@ export function messageSent(myId, contactId, type, content) {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ myId, contactId, type, content }),
+      body: JSON.stringify(messageObject),
     })
       .then((response) => response.json())
       .then((json) => {
@@ -69,11 +82,9 @@ export function messageSent(myId, contactId, type, content) {
           type: "message/send/succeed",
           payload: {
             ...json,
-            tempId: randomId
+            nextTempId
           }
         });
-
-       scrollChatToBottom()
       });
   };
 }

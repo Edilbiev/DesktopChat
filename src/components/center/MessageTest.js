@@ -31,7 +31,8 @@ function MessageTest({ isInbox, message, label }) {
         <div className="message-text">{message.content}</div>
         <div className="time">
           {moment(message.time).format("HH:mm")}
-          {!isInbox && readIcon}
+          {(!isInbox && !message.sending) && readIcon}
+          {message.sending && '---'}
         </div>
       </div>
     </div>
