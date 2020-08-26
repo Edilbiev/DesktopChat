@@ -10,7 +10,8 @@
   height: 100vh;
 }
 
-input, textarea {
+input,
+textarea {
   border: none;
   outline: none;
 }
@@ -54,7 +55,8 @@ button:hover {
   padding: 30px;
 }
 
-.search-contact, .search-contact-disabled {
+.search-contact,
+.search-contact-disabled {
   background-color: white;
   display: flex;
   align-items: center;
@@ -72,7 +74,7 @@ button:hover {
 }
 
 .search-contact-disabled {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .search-contact input {
@@ -197,27 +199,29 @@ button:hover {
 }
 
 .material-icons {
-  font-size: 20px!important;
-  margin: 0!important;
+  font-size: 20px !important;
+  margin: 0 !important;
 }
 
 .negative-rotate {
   transform: rotate(-90deg);
-  transition: transform .7s;
+  transition: transform 0.7s;
 }
 
 .rotate {
   transform: rotate(90deg);
-  transition: transform .7s;
+  transition: transform 0.7s;
 }
 
-.chat-header-name, .update {
+.chat-header-name,
+.update {
   display: flex;
   align-items: center;
 }
 
-.online-indicator-header, .online-indicator-contact {
-  background-color: #55C662;
+.online-indicator-header,
+.online-indicator-contact {
+  background-color: #55c662;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -285,11 +289,11 @@ button:hover {
 }
 
 .clear-button:hover {
-  color: #B5151A!important;
+  color: #b5151a !important;
 }
 
 .clear-button .material-icons {
-  font-size: 17px!important;
+  font-size: 17px !important;
 }
 
 .info-message {
@@ -308,7 +312,8 @@ button:hover {
   border-radius: 15px;
 }
 
-.outbox-message-outer, .inbox-message-outer {
+.outbox-message-outer,
+.inbox-message-outer {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
@@ -318,15 +323,17 @@ button:hover {
   justify-content: flex-start;
 }
 
-.outbox-message, .inbox-message {
+.outbox-message,
+.inbox-message {
   color: white;
   background-color: #632df8;
   border-radius: 13px 13px 0 13px;
   padding: 10px 10px 4px;
+  position: relative;
 }
 
 .inbox-message {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
   color: black;
   border-radius: 13px 13px 13px 0;
 }
@@ -344,11 +351,12 @@ button:hover {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: default;
 }
 
 .message-time .material-icons {
-  font-size: 13px!important;
-  margin-left: 2px!important;
+  font-size: 13px !important;
+  margin-left: 2px !important;
 }
 
 .message-input {
@@ -358,7 +366,7 @@ button:hover {
 }
 
 .read {
-  color: #55C662;
+  color: #55c662;
 }
 
 .message-textarea {
@@ -381,7 +389,7 @@ button:hover {
 }
 
 .message-input .material-icons {
-  font-size: 23px!important;
+  font-size: 23px !important;
 }
 
 .contact-info {
@@ -457,14 +465,12 @@ button:hover {
 }
 
 .dots .material-icons {
-  font-size: 20px!important;
+  font-size: 20px !important;
 }
 
 .dots:hover {
   color: #e7eaed;
 }
-
-
 
 .refresh {
   animation-name: spin;
@@ -475,31 +481,57 @@ button:hover {
 
 @keyframes spin {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.send-button-enter, .mic-button-exit {
+.send-button-enter,
+.mic-button-exit,
+.dropdown-arrow-exit {
   opacity: 0;
   transform: translateX(100%);
 }
-.send-button-enter-active, .mic-button-exit-active {
+.send-button-enter-active,
+.mic-button-exit-active,
+.dropdown-arrow-exit-active {
   opacity: 1;
   transform: translateX(0);
 }
-.send-button-exit,.mic-button-enter {
+.send-button-exit,
+.mic-button-enter,
+.dropdown-arrow-enter {
   opacity: 1;
   transform: translateX(0);
 }
-.send-button-exit-active, .mic-button-enter-active {
+.send-button-exit-active,
+.mic-button-enter-active,
+.dropdown-arrow-enter-active {
   opacity: 0;
   transform: translateX(100%);
 }
 
-.send-button-exit-active, .send-button-enter-active, .mic-button-enter-active, .mic-button-exit-active {
+.send-button-exit-active,
+.send-button-enter-active,
+.mic-button-enter-active,
+.mic-button-exit-active,
+.dropdown-arrow-enter-active,
+.dropdown-arrow-exit-active {
   transition: opacity 500ms, transform 500ms;
 }
 
+.dropdown-arrow {
+  color: white;
+  position: absolute;
+  background: linear-gradient(to left, #632df8, transparent 100%);
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.dropdown-arrow .material-icons {
+  font-size: 26px !important;
+}

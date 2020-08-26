@@ -2,6 +2,7 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 
 function MessageSendButtons({ isTyping, handleClick }) {
+
   return (
     <>
       <button>

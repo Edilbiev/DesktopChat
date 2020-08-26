@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Dropdown from "./Dropdown";
-import DropdownItem from "./DropdownItem";
+import Dropdown from "../common/dropdown/Dropdown";
+import DropdownItem from "../common/dropdown/DropdownItem";
 
 function DropdownMenu(props) {
   const [dropdown, setDropdown] = useState(false);

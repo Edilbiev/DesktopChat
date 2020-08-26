@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import Avatar from "../common/Avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {settingsBarHandled} from "../../redux/actions";
+import MessageDropdown from "./MessageDropdown";
 
 function TextMessage({ isInbox, message, label }) {
   const dispatch = useDispatch();
@@ -11,6 +12,16 @@ function TextMessage({ isInbox, message, label }) {
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
+
+  const [showArrow, setShowArrow] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowArrow(true)
+  };
+
+  const handleMouseLeave = () => {
+    setShowArrow(false)
+  };
 
   const type = isInbox ? "inbox" : "outbox";
 
@@ -27,12 +38,17 @@ function TextMessage({ isInbox, message, label }) {
   return (
     <div className={`${type}-message-outer`}>
       {isInbox && <Avatar label={contactInfo.fullname[0]} size="small" onclick={handleShowSettings}/>}
-      <div className={`${type}-message`}>
+      <div
+        className={`${type}-message`}
+         onMouseEnter={handleMouseEnter}
+         onMouseLeave={handleMouseLeave}
+      >
         <div className="message-text">{message.content}</div>
         <div className="message-time">
           {moment(message.time).format("HH:mm")}
           {(!isInbox && !message.sending) && readIcon}
           {message.sending && <i className="material-icons">schedule</i>}
+          {showArrow && <MessageDropdown isShowed={showArrow}/>}
         </div>
       </div>
     </div>
