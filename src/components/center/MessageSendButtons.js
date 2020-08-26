@@ -9,7 +9,7 @@ function MessageSendButtons({ isTyping, handleClick }) {
         <i className="material-icons">attach_file</i>
       </button>
       {isTyping ? (
-        <CSSTransition in={isTyping} timeout={1000} classNames="send-button" >
+        <CSSTransition in={isTyping} timeout={500} classNames="send-button" >
           <button onClick={handleClick}>
             <i className="material-icons">send</i>
           </button>

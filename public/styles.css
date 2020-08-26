@@ -492,25 +492,25 @@ button:hover {
 .mic-button-exit,
 .dropdown-arrow-exit {
   opacity: 0;
-  transform: translateX(100%);
+  transform: scale(0);
 }
 .send-button-enter-active,
 .mic-button-exit-active,
 .dropdown-arrow-exit-active {
   opacity: 1;
-  transform: translateX(0);
+  transform: scale(1);
 }
 .send-button-exit,
 .mic-button-enter,
 .dropdown-arrow-enter {
   opacity: 1;
-  transform: translateX(0);
+  transform: scale(1);
 }
 .send-button-exit-active,
 .mic-button-enter-active,
 .dropdown-arrow-enter-active {
   opacity: 0;
-  transform: translateX(100%);
+  transform: scale(0);
 }
 
 .send-button-exit-active,
@@ -519,7 +519,7 @@ button:hover {
 .mic-button-exit-active,
 .dropdown-arrow-enter-active,
 .dropdown-arrow-exit-active {
-  transition: opacity 500ms, transform 500ms;
+  transition: opacity 300ms, transform 300ms;
 }
 
 .dropdown-arrow {
