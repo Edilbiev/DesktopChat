@@ -1,4 +1,5 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 
 function MessageSendButtons({ isTyping, handleClick }) {
   return (
@@ -7,13 +8,17 @@ function MessageSendButtons({ isTyping, handleClick }) {
         <i className="material-icons">attach_file</i>
       </button>
       {isTyping ? (
-        <button onClick={handleClick}>
-          <i className="material-icons">send</i>
-        </button>
+        <CSSTransition in={isTyping} timeout={1000} classNames="send-button" >
+          <button onClick={handleClick}>
+            <i className="material-icons">send</i>
+          </button>
+        </CSSTransition>
       ) : (
-        <button>
-          <i className="material-icons">mic</i>
-        </button>
+        <CSSTransition timeout={1000} classNames="mic-button">
+          <button>
+            <i className="material-icons">mic</i>
+          </button>
+        </CSSTransition>
       )}
     </>
   );

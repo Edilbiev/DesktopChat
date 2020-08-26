@@ -5,7 +5,7 @@ import Avatar from "../common/Avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {settingsBarHandled} from "../../redux/actions";
 
-function MessageTest({ isInbox, message, label }) {
+function TextMessage({ isInbox, message, label }) {
   const dispatch = useDispatch();
   const opened = useSelector((state) => state.chat.opened);
   const contactInfo = useSelector((state) =>
@@ -29,22 +29,22 @@ function MessageTest({ isInbox, message, label }) {
       {isInbox && <Avatar label={contactInfo.fullname[0]} size="small" onclick={handleShowSettings}/>}
       <div className={`${type}-message`}>
         <div className="message-text">{message.content}</div>
-        <div className="time">
+        <div className="message-time">
           {moment(message.time).format("HH:mm")}
           {(!isInbox && !message.sending) && readIcon}
-          {message.sending && '---'}
+          {message.sending && <i className="material-icons">schedule</i>}
         </div>
       </div>
     </div>
   );
 }
 
-MessageTest.propTypes = {
+TextMessage.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-MessageTest.defaultProps = {
+TextMessage.defaultProps = {
   type: "outbox",
 };
 
-export default MessageTest;
+export default TextMessage;

@@ -16,7 +16,7 @@ function ContactSearch() {
   };
 
   return (
-    <div className="search-contact">
+    <div className={loading ? "search-contact-disabled" : "search-contact"}>
       <div className="search-contact-icon">
         <i className="material-icons">search</i>
       </div>

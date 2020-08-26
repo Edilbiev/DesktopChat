@@ -54,7 +54,7 @@ button:hover {
   padding: 30px;
 }
 
-.search-contact {
+.search-contact, .search-contact-disabled {
   background-color: white;
   display: flex;
   align-items: center;
@@ -69,6 +69,10 @@ button:hover {
   position: sticky;
   top: 10px;
   z-index: 1000;
+}
+
+.search-contact-disabled {
+  background-color: #F7F7F7;
 }
 
 .search-contact input {
@@ -276,23 +280,16 @@ button:hover {
 
 .clear-button {
   position: absolute;
-  top: 15px;
+  top: 16px;
   left: 570px;
+}
+
+.clear-button:hover {
+  color: #B5151A!important;
 }
 
 .clear-button .material-icons {
   font-size: 17px!important;
-}
-
-.message-time {
-  font-size: 11px;
-  text-align: right;
-  margin-left: 5px;
-  color: #7a7b7b;
-}
-.message-time i {
-  margin-left: 5px;
-  font-size: 15px;
 }
 
 .info-message {
@@ -310,8 +307,6 @@ button:hover {
   line-height: 30px;
   border-radius: 15px;
 }
-
-/*-----------------*/
 
 .outbox-message-outer, .inbox-message-outer {
   display: flex;
@@ -342,59 +337,18 @@ button:hover {
   overflow-wrap: break-word;
 }
 
-.time {
+.message-time {
   min-width: 150px;
   max-width: 350px;
-  font-size: 13px;
+  font-size: 11px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.time .material-icons {
-  font-size: 15px!important;
+.message-time .material-icons {
+  font-size: 13px!important;
   margin-left: 2px!important;
-}
-
-
-
-
-
-
-
-
-
-
-
-/*-----------------*/
-
-.message-to {
-  display: flex;
-  margin-bottom: 15px;
-  align-items: flex-end;
-}
-
-.message-from {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-bottom: 15px;
-}
-
-.message-to-text,
-.message-from-inner {
-  background-color: #F1F5F9;
-  padding: 10px 15px;
-  max-width: 300px;
-  border-radius: 13px 13px 13px 0;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-}
-
-.message-from-inner {
-  color: white;
-  background-color: #632df8;
-  border-radius: 13px 13px 0 13px;
 }
 
 .message-input {
@@ -527,3 +481,25 @@ button:hover {
     transform:rotate(360deg);
   }
 }
+
+.send-button-enter, .mic-button-exit {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.send-button-enter-active, .mic-button-exit-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.send-button-exit,.mic-button-enter {
+  opacity: 1;
+  transform: translateX(0);
+}
+.send-button-exit-active, .mic-button-enter-active {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.send-button-exit-active, .send-button-enter-active, .mic-button-enter-active, .mic-button-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}
+

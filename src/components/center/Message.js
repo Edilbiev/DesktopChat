@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import InfoMessage from "./InfoMessage";
-import MessageTest from "./MessageTest";
+import TextMessage from "./TextMessage";
 
 function Message({ message }) {
   const myId = useSelector((state) => state.profile._id);
@@ -10,7 +10,7 @@ function Message({ message }) {
       return <InfoMessage text={message.content} key={message._id} />;
     }
 
-    return <MessageTest message={message} isInbox={message.toUserId === myId}/>
+    return <TextMessage message={message} isInbox={message.toUserId === myId}/>
 
 
 }
