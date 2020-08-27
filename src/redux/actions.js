@@ -89,6 +89,30 @@ export function messageSent(messageObject) {
   };
 }
 
+export function messageDeleted(id) {
+  return (dispatch) => {
+    dispatch({
+      type: "message/delete/started"
+    })
+
+    fetch("http://151.248.117.7:8001/api/messages", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(id),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch({
+          type: "message/delete/succeed",
+          payload: json,
+        })
+      })
+  }
+}
+
 export function contactSearchStringSet(value) {
   return {
     type: "contacts/search/set",

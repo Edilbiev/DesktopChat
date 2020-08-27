@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Contact from "./Contact";
-import RecentChatSkeleton from "../common/skeletons/RecentChatsSkeleton";
 import SkeletonList from "../common/skeletons/SkeletonList";
 
 function RecentChats() {

@@ -249,6 +249,7 @@ button:hover {
 .chat {
   overflow-y: scroll;
   height: calc(100vh - 50px - 66px);
+  position: relative;
 }
 
 .chat::-webkit-scrollbar {
@@ -329,7 +330,6 @@ button:hover {
   background-color: #632df8;
   border-radius: 13px 13px 0 13px;
   padding: 10px 10px 4px;
-  position: relative;
 }
 
 .inbox-message {
@@ -352,6 +352,7 @@ button:hover {
   justify-content: flex-end;
   align-items: center;
   cursor: default;
+  position: relative;
 }
 
 .message-time .material-icons {
@@ -440,13 +441,20 @@ button:hover {
   margin-right: 10px;
 }
 
-.dropdown {
+
+.contact-dropdown, .message-dropdown {
+  z-index: 9999;
   position: absolute;
   left: 210px;
   background-color: white;
   padding: 7px 0;
   box-shadow: 0 5px 5px 0 #e7eaed;
   text-align: left;
+}
+
+.message-dropdown {
+  left: 0;
+  top: 0;
 }
 
 .dropdown-item {

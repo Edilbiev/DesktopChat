@@ -1,7 +1,6 @@
 import React from "react";
 import Message from "./Message";
 import {useSelector} from "react-redux";
-import TextMessage from "./TextMessage";
 
 function Chat() {
   const chat = useSelector((state) => {
@@ -17,7 +16,7 @@ function Chat() {
   return (
     <div className="chat" id="chat-window">
       <div className="chat-inner">
-        {chat.map((message) => <Message message={message} />)}
+        {chat.map((message) => <Message key={message._id} message={message} />)}
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ function TextMessage({ isInbox, message, label }) {
           {moment(message.time).format("HH:mm")}
           {(!isInbox && !message.sending) && readIcon}
           {message.sending && <i className="material-icons">schedule</i>}
-          {showArrow && <MessageDropdown isShowed={showArrow}/>}
+          {showArrow && <MessageDropdown isShowed={showArrow} messageId={message._id}/>}
         </div>
       </div>
     </div>

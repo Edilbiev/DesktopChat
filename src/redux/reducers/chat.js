@@ -2,7 +2,8 @@ const initialState = {
   loading: false,
   items: [],
   opened: null,
-  nextTempId: 1
+  nextTempId: 1,
+  deleting: false,
 };
 
 export default function chat(state = initialState, action) {
@@ -48,6 +49,19 @@ export default function chat(state = initialState, action) {
           return item;
         }),
       };
+
+    case "message/delete/started":
+      return {
+        ...state,
+        deleting: true,
+      }
+
+    case "message/delete/succeed":
+      return {
+        ...state,
+        deleting: false,
+        items: action.payload,
+      }
 
     default:
       return state;

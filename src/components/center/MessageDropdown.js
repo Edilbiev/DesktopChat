@@ -2,12 +2,19 @@ import React, {useState} from 'react';
 import {CSSTransition} from "react-transition-group";
 import Dropdown from "../common/dropdown/Dropdown";
 import DropdownItem from "../common/dropdown/DropdownItem";
+import {messageDeleted} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
-function MessageDropdown({ isShowed }) {
+function MessageDropdown({ isShowed, messageId }) {
+  const dispatch = useDispatch();
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => {
     setDropdown(!dropdown)
+  };
+
+  const handleDelete = () => {
+    dispatch(messageDeleted(messageId))
   };
 
   return (
@@ -17,8 +24,8 @@ function MessageDropdown({ isShowed }) {
           <i className="material-icons">keyboard_arrow_down</i>
         </button>
       </CSSTransition>
-      <Dropdown open={dropdown}>
-        <DropdownItem>
+      <Dropdown open={dropdown} type="message">
+        <DropdownItem action={handleDelete}>
           Delete
         </DropdownItem>
       </Dropdown>

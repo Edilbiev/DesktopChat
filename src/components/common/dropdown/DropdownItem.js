@@ -1,8 +1,8 @@
 import React from 'react';
 
-function DropdownItem({ children }) {
+function DropdownItem({ children, action }) {
   return (
-    <div className="dropdown-item">{children}</div>
+    <div className="dropdown-item" onClick={action}>{children}</div>
   );
 }
 
