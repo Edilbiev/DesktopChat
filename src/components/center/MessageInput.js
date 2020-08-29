@@ -23,7 +23,7 @@ function MessageInput() {
 
   const sendMessage = () => {
     if (message.length) {
-      dispatch(messageSent({ myId, opened, type: "text", content: message }));
+      dispatch(messageSent({ myId, contactId: opened, type: "text", content: message }));
     }
 
     setMessage("")

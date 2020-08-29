@@ -148,6 +148,11 @@ button:hover {
   font-weight: 300;
   color: #7a7b7b;
   flex: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
 }
 
 .chat-item-center {
@@ -330,6 +335,7 @@ button:hover {
   background-color: #632df8;
   border-radius: 13px 13px 0 13px;
   padding: 10px 10px 4px;
+  position: relative;
 }
 
 .inbox-message {
@@ -352,7 +358,6 @@ button:hover {
   justify-content: flex-end;
   align-items: center;
   cursor: default;
-  position: relative;
 }
 
 .message-time .material-icons {
@@ -443,7 +448,7 @@ button:hover {
 
 
 .contact-dropdown, .message-dropdown {
-  z-index: 9999;
+  z-index: 99;
   position: absolute;
   left: 210px;
   background-color: white;
@@ -453,8 +458,6 @@ button:hover {
 }
 
 .message-dropdown {
-  left: 0;
-  top: 0;
 }
 
 .dropdown-item {
@@ -537,6 +540,7 @@ button:hover {
   display: flex;
   align-items: center;
   bottom: 0;
+  right: 0;
   cursor: pointer;
 }
 

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {chatLoaded, messageSearchStringClosed} from "../../redux/actions";
 import DropdownMenu from "./DropdownMenu";
 import Avatar from "../common/Avatar";
+import moment from "moment";
+
 
 function Contact({ fullname, lastMessage, _id, online }) {
   const myId = useSelector((state) => state.profile._id);
@@ -26,6 +28,12 @@ function Contact({ fullname, lastMessage, _id, online }) {
     setShowDots(false)
   };
 
+  const readIcon = lastMessage.read ? (
+    <i className="material-icons">done_all</i>
+  ) : (
+    <i className="material-icons">done</i>
+  );
+
   return (
     <div
       className={_id === opened ? "chats-item-opened" : "chats-item"}
@@ -37,11 +45,12 @@ function Contact({ fullname, lastMessage, _id, online }) {
       <div className="chat-item-center">
         <div>{fullname}</div>
         <div className="last-message">
-          {lastMessage.substring(0, 18) + "..."}
+          {lastMessage.fromUserId !== _id && readIcon}
+          {lastMessage.content}
         </div>
       </div>
       <div className="recent-chats-time">
-        {showDots ? <DropdownMenu/> : '9:00'}
+        {showDots ? <DropdownMenu/> : moment(lastMessage.time).format("HH:mm")}
       </div>
     </div>
   );

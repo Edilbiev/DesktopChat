@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Dropdown from "../common/dropdown/Dropdown";
 import DropdownItem from "../common/dropdown/DropdownItem";
 
-function DropdownMenu(props) {
+function DropdownMenu() {
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = (event) => {

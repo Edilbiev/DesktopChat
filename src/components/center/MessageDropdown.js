@@ -18,7 +18,7 @@ function MessageDropdown({ isShowed, messageId }) {
   };
 
   return (
-    <>
+    <div>
       <CSSTransition in={isShowed} timeout={800} classNames="dropdown-arrow">
         <button className="dropdown-arrow" onClick={handleClick}>
           <i className="material-icons">keyboard_arrow_down</i>
@@ -29,7 +29,7 @@ function MessageDropdown({ isShowed, messageId }) {
           Delete
         </DropdownItem>
       </Dropdown>
-    </>
+    </div>
   );
 }
 
