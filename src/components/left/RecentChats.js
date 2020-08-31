@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Contact from "./Contact";
 import SkeletonList from "../common/skeletons/SkeletonList";
+import moment from "moment";
 
 function RecentChats() {
   const items = useSelector(({ application, contacts }) => {
@@ -13,11 +14,14 @@ function RecentChats() {
     });
   });
 
+  const itemsSortedByTime = items.sort((a,b) => {
+    return a.lastMessage && moment(b.lastMessage.time) - moment(a.lastMessage.time)})
+
   const loading = useSelector((state) => state.contacts.loading);
 
   return loading
     ? <SkeletonList />
-    : items.map((item) => <Contact key={item._id} {...item} />);
+    : itemsSortedByTime.map((item) => <Contact key={item._id} {...item} />);
 }
 
 export default RecentChats;

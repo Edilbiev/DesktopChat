@@ -143,16 +143,19 @@ button:hover {
   font-size: 23px;
 }
 
-.last-message {
+.last-message, .username {
   font-size: 13px;
   font-weight: 300;
   color: #7a7b7b;
-  flex: 2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: flex;
   align-items: center;
+}
+.username {
+  justify-content: center;
+}
+
+.last-message .material-icons {
+  font-size: 16px!important;
 }
 
 .chat-item-center {
@@ -465,6 +468,7 @@ button:hover {
   font-size: 17px;
   color: #7a7b7b;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .dropdown-item:hover {

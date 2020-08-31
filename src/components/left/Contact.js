@@ -28,7 +28,7 @@ function Contact({ fullname, lastMessage, _id, online }) {
     setShowDots(false)
   };
 
-  const readIcon = lastMessage.read ? (
+  const readIcon = lastMessage && lastMessage.read ? (
     <i className="material-icons">done_all</i>
   ) : (
     <i className="material-icons">done</i>
@@ -45,12 +45,15 @@ function Contact({ fullname, lastMessage, _id, online }) {
       <div className="chat-item-center">
         <div>{fullname}</div>
         <div className="last-message">
-          {lastMessage.fromUserId !== _id && readIcon}
-          {lastMessage.content}
+          {lastMessage && lastMessage.fromUserId !== _id && readIcon}
+          {lastMessage && lastMessage.content.length > 16 ?
+            lastMessage && lastMessage.content.substring(0, 16) + "..." :
+            lastMessage && lastMessage.content
+          }
         </div>
       </div>
       <div className="recent-chats-time">
-        {showDots ? <DropdownMenu/> : moment(lastMessage.time).format("HH:mm")}
+        {showDots ? <DropdownMenu/> : lastMessage && moment(lastMessage.time).format("HH:mm")}
       </div>
     </div>
   );
