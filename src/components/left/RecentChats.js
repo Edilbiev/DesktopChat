@@ -14,14 +14,19 @@ function RecentChats() {
     });
   });
 
-  const itemsSortedByTime = items.sort((a,b) => {
-    return a.lastMessage && moment(b.lastMessage.time) - moment(a.lastMessage.time)})
+  const itemsSortedByTime = items.sort((a, b) => {
+    return (
+      a.lastMessage && moment(b.lastMessage.time) - moment(a.lastMessage.time)
+    );
+  });
 
   const loading = useSelector((state) => state.contacts.loading);
 
-  return loading
-    ? <SkeletonList />
-    : itemsSortedByTime.map((item) => <Contact key={item._id} {...item} />);
+  return loading ? (
+    <SkeletonList />
+  ) : (
+    itemsSortedByTime.map((item) => <Contact key={item._id} {...item} />)
+  );
 }
 
 export default RecentChats;

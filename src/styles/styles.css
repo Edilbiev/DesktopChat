@@ -334,6 +334,7 @@ button:hover {
 
 .outbox-message,
 .inbox-message {
+  min-width: 200px;
   color: white;
   background-color: #632df8;
   border-radius: 13px 13px 0 13px;
@@ -348,7 +349,6 @@ button:hover {
 }
 
 .message-text {
-  min-width: 100px;
   max-width: 300px;
   overflow-wrap: break-word;
 }
@@ -461,6 +461,8 @@ button:hover {
 }
 
 .message-dropdown {
+  left: inherit;
+  right: 0;
 }
 
 .dropdown-item {
@@ -538,9 +540,10 @@ button:hover {
 }
 
 .dropdown-arrow {
-  color: white;
+  height: 100%;
+  color: inherit;
   position: absolute;
-  background: linear-gradient(to left, #632df8, transparent 100%);
+  background: linear-gradient(to left, white, transparent 100%);
   display: flex;
   align-items: center;
   bottom: 0;
