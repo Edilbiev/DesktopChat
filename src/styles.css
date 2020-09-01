@@ -211,16 +211,6 @@ button:hover {
   margin: 0 !important;
 }
 
-.negative-rotate {
-  transform: rotate(-90deg);
-  transition: transform 0.7s;
-}
-
-.rotate {
-  transform: rotate(90deg);
-  transition: transform 0.7s;
-}
-
 .chat-header-name,
 .update {
   display: flex;

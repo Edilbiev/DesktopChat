@@ -7,15 +7,14 @@ import {
 import MessageSearch from "./MessageSearch";
 import OnlineIndicator from "../common/OnlineIndicator";
 import { useHotkeys } from "react-hotkeys-hook";
+import {useParams} from "react-router-dom";
 
 function ChatHeader() {
-  const settingsBarOpened = useSelector(
-    (state) => state.application.settingsBarOpened
-  );
-
   const loading = useSelector((state) => state.chat.loading);
 
-  const opened = useSelector((state) => state.chat.opened);
+  console.log(loading)
+
+  const opened = useParams().id;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
@@ -61,15 +60,7 @@ function ChatHeader() {
       </div>
       <div>
         <button onClick={handleShowSettings}>
-          <i
-            className={
-              settingsBarOpened
-                ? "material-icons negative-rotate"
-                : "material-icons rotate"
-            }
-          >
-            settings
-          </i>
+          <i className="material-icons">web</i>
         </button>
       </div>
     </div>

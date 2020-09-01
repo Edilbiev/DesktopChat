@@ -3,8 +3,11 @@ import { useSelector } from "react-redux";
 import Contact from "./Contact";
 import SkeletonList from "../common/skeletons/SkeletonList";
 import moment from "moment";
+import {useParams} from "react-router-dom";
 
 function RecentChats() {
+
+  console.log(useParams())
   const items = useSelector(({ application, contacts }) => {
     const { contactSearchString } = application;
     return contacts.items.filter(({ fullname }) => {
@@ -25,7 +28,7 @@ function RecentChats() {
   return loading ? (
     <SkeletonList />
   ) : (
-    itemsSortedByTime.map((item) => <Contact key={item._id} {...item} />)
+    itemsSortedByTime.map((item) => <Contact key={item._id} item={item} />)
   );
 }
 

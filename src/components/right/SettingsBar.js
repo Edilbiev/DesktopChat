@@ -3,14 +3,15 @@ import ContactInfo from "./ContactInfo";
 import { useSelector } from "react-redux";
 import Social from "./Social";
 import Media from "./Media";
+import {useParams} from "react-router-dom";
 
 function SettingsBar() {
   const settingsBarOpened = useSelector(
     (state) => state.application.settingsBarOpened
   );
-  const opened = useSelector((state) => state.chat.opened);
+  const opened = useParams().id;
 
-  if (opened === null) {
+  if (opened === undefined) {
     return null;
   }
 

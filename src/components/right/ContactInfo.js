@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Avatar from "../common/Avatar";
+import {useParams} from "react-router-dom";
 
 function ContactInfo() {
-  const opened = useSelector((state) => state.chat.opened);
+  const opened = useParams().id;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );

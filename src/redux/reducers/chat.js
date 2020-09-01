@@ -1,7 +1,6 @@
 const initialState = {
   loading: false,
   items: [],
-  opened: null,
   nextTempId: 1,
   deleting: false,
 };
@@ -13,7 +12,6 @@ export default function chat(state = initialState, action) {
         ...state,
         items: [],
         loading: true,
-        opened: action.payload,
       };
 
     case "chat/load/success":

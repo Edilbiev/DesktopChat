@@ -1,11 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import {useParams} from "react-router-dom";
 
 function Social() {
-  const opened = useSelector((state) => state.chat.opened);
+  const opened = useParams().id;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
+
+  if(!contactInfo.hasOwnProperty('socials')) {
+    return null;
+  }
 
   return (
     <div>
