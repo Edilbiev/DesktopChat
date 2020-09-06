@@ -5,10 +5,11 @@ import Avatar from "../common/Avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {settingsBarHandled} from "../../redux/actions";
 import MessageDropdown from "./MessageDropdown";
+import {useParams} from "react-router-dom";
 
 function TextMessage({ isInbox, message, label }) {
   const dispatch = useDispatch();
-  const opened = useSelector((state) => state.chat.opened);
+  const opened = useParams().id;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );

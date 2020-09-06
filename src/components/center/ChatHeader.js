@@ -12,8 +12,6 @@ import {useParams} from "react-router-dom";
 function ChatHeader() {
   const loading = useSelector((state) => state.chat.loading);
 
-  console.log(loading)
-
   const opened = useParams().id;
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)

@@ -15,10 +15,10 @@ function ChatWindow() {
   const myId = useSelector(state => state.profile._id);
 
   useEffect(() => {
-    alert()
-    dispatch(messageSearchStringClosed())
-    dispatch(chatLoaded(myId, opened))
-  }, [dispatch, myId]);
+    if (opened) {
+      dispatch(chatLoaded(myId, opened))
+    }
+  }, [dispatch, myId, opened]);
 
   if (opened === undefined) {
     return <InfoMessage text="Please, select a chat to start messaging" />;

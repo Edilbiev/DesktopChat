@@ -7,7 +7,6 @@ import DropdownMenu from "./DropdownMenu";
 import moment from "moment";
 
 function ContactWithLastMessage({ fullname, lastMessage, _id, online }) {
-  const myId = useSelector((state) => state.profile._id);
   const opened = useParams().id;
   const dispatch = useDispatch();
 
@@ -17,6 +16,7 @@ function ContactWithLastMessage({ fullname, lastMessage, _id, online }) {
 
   const handleClick = () => {
     if (_id !== opened) {
+      dispatch(messageSearchStringClosed())
       history.push(_id)
     }
   }

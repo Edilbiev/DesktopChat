@@ -1,29 +1,31 @@
 import React, { useEffect } from "react";
 import Sidebar from "./left/Sidebar";
 import ChatWindow from "./center/ChatWindow";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { contactsLoaded, profileLoaded } from "../redux/actions";
 import SettingsBar from "./right/SettingsBar";
-import {BrowserRouter, Route} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.profile.loading);
+  const opened = useParams().id;
 
   useEffect(() => {
     dispatch(contactsLoaded());
     dispatch(profileLoaded());
   }, [dispatch]);
 
+  if (loading) {
+    return null;
+  }
+
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Route path='/:id?'>
-          <Sidebar />
-          <ChatWindow />
-          <SettingsBar />
-        </Route>
-      </div>
-    </BrowserRouter>
+    <div className="app">
+      <Sidebar />
+      <ChatWindow />
+      <SettingsBar />
+    </div>
   );
 }
 

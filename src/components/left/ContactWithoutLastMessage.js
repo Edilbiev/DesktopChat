@@ -17,8 +17,6 @@ function ContactWithoutLastMessage({ fullname, _id, online }) {
   const handleClick = () => {
     if (_id !== opened) {
       dispatch(messageSearchStringClosed())
-      dispatch(chatLoaded(myId, _id))
-
       history.push(_id)
     }
   }

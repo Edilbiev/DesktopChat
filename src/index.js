@@ -5,12 +5,17 @@ import { Provider } from "react-redux";
 import { store } from "./redux";
 import "font-awesome/css/font-awesome.min.css";
 import "normalize.css";
-import "./styles.css"
+import "./styles.css";
+import { BrowserRouter, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Route path='/:id?'>
+          <App />
+        </Route>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
