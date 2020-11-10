@@ -1,6 +1,6 @@
-import React from 'react';
-import OnlineIndicator from "./OnlineIndicator";
+import React from "react";
 import PropTypes from "prop-types";
+import OnlineIndicator from "./OnlineIndicator";
 
 function Avatar({ label, online, size, onclick }) {
   return (
@@ -14,12 +14,12 @@ function Avatar({ label, online, size, onclick }) {
 Avatar.propTypes = {
   size: PropTypes.string.isRequired,
   label: PropTypes.string,
-  online: PropTypes.bool.isRequired
-}
+  online: PropTypes.bool.isRequired,
+};
 
 Avatar.defaultProps = {
   size: "medium",
-  online: false
-}
+  online: false,
+};
 
 export default Avatar;

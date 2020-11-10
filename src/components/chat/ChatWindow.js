@@ -1,28 +1,28 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ChatHeader from "./ChatHeader";
 import Chat from "./Chat";
 import MessageInput from "./MessageInput";
-import {useDispatch, useSelector} from "react-redux";
 import InfoMessage from "./InfoMessage";
-import {useParams} from "react-router-dom";
-import {chatLoaded, messageSearchStringClosed} from "../../redux/actions";
-
+import { chatLoaded } from "../../redux/actions";
 
 function ChatWindow() {
-  // const opened = useSelector((state) => state.chat.opened);
   const opened = useParams().id;
   const dispatch = useDispatch();
-  const myId = useSelector(state => state.profile._id);
+
+  const myId = useSelector((state) => state.profile._id);
 
   useEffect(() => {
     if (opened) {
-      dispatch(chatLoaded(myId, opened))
+      dispatch(chatLoaded(myId, opened));
     }
   }, [dispatch, myId, opened]);
 
-  if (opened === undefined) {
+  if (!opened) {
     return <InfoMessage text="Please, select a chat to start messaging" />;
   }
+
   return (
     <div className="chat-window">
       <div className="chat-window-inner">

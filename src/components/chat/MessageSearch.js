@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {messageSearchStringCleared, messageSearchStringSet} from "../../redux/actions";
+import {
+  messageSearchStringCleared,
+  messageSearchStringSet,
+} from "../../redux/actions";
 
 function MessageSearch() {
   const dispatch = useDispatch();
@@ -11,13 +14,14 @@ function MessageSearch() {
   const searchString = useSelector(
     (state) => state.application.messageSearchString
   );
+
   const handleChange = (event) => {
     dispatch(messageSearchStringSet(event.target.value));
   };
 
   const handleClear = () => {
-    dispatch(messageSearchStringCleared())
-  }
+    dispatch(messageSearchStringCleared());
+  };
 
   return (
     <div>

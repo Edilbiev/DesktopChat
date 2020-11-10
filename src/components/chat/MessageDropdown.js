@@ -4,7 +4,7 @@ import DropdownItem from "../common/dropdown/DropdownItem";
 import { messageDeleted } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
-function MessageDropdown({ isShowed, messageId }) {
+function MessageDropdown({ messageId }) {
   const dispatch = useDispatch();
   const [dropdown, setDropdown] = useState(false);
 

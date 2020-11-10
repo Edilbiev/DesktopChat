@@ -1,15 +1,17 @@
-import React, {useState} from "react";
-import moment from "moment";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import Avatar from "../common/Avatar";
-import {useDispatch, useSelector} from "react-redux";
-import {settingsBarHandled} from "../../redux/actions";
+import { settingsBarHandled } from "../../redux/actions";
 import MessageDropdown from "./MessageDropdown";
-import {useParams} from "react-router-dom";
+import dayjs from "dayjs";
 
-function TextMessage({ isInbox, message, label }) {
+function TextMessage({ isInbox, message }) {
   const dispatch = useDispatch();
+
   const opened = useParams().id;
+
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
@@ -17,11 +19,11 @@ function TextMessage({ isInbox, message, label }) {
   const [showArrow, setShowArrow] = useState(false);
 
   const handleMouseEnter = () => {
-    setShowArrow(true)
+    setShowArrow(true);
   };
 
   const handleMouseLeave = () => {
-    setShowArrow(false)
+    setShowArrow(false);
   };
 
   const type = isInbox ? "inbox" : "outbox";
@@ -38,19 +40,27 @@ function TextMessage({ isInbox, message, label }) {
 
   return (
     <div className={`${type}-message-outer`}>
-      {isInbox && <Avatar label={contactInfo.fullname[0]} size="small" onclick={handleShowSettings}/>}
+      {isInbox && (
+        <Avatar
+          label={contactInfo.fullname[0]}
+          size="small"
+          onclick={handleShowSettings}
+        />
+      )}
       <div
         className={`${type}-message`}
-         onMouseEnter={handleMouseEnter}
-         onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div className="message-text">{message.content}</div>
         <div className="message-time">
-          {moment(message.time).format("HH:mm")}
-          {(!isInbox && !message.sending) && readIcon}
+          {dayjs (message.time).format("HH:mm")}
+          {!isInbox && !message.sending && readIcon}
           {message.sending && <i className="material-icons">schedule</i>}
         </div>
-        {showArrow && <MessageDropdown isShowed={showArrow} messageId={message._id}/>}
+        {showArrow && (
+          <MessageDropdown messageId={message._id} />
+        )}
       </div>
     </div>
   );

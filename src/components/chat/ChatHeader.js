@@ -1,21 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHotkeys } from "react-hotkeys-hook";
+import { useParams } from "react-router-dom";
 import {
   messageSearchStringHandled,
   settingsBarHandled,
 } from "../../redux/actions";
 import MessageSearch from "./MessageSearch";
 import OnlineIndicator from "../common/OnlineIndicator";
-import { useHotkeys } from "react-hotkeys-hook";
-import {useParams} from "react-router-dom";
 
 function ChatHeader() {
   const loading = useSelector((state) => state.chat.loading);
 
   const opened = useParams().id;
+
   const contactInfo = useSelector((state) =>
     state.contacts.items.find((item) => item._id === opened)
   );
+
   const dispatch = useDispatch();
 
   const handleShowSearchString = () => {

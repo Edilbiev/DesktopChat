@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import Dropdown from "../common/dropdown/Dropdown";
 import DropdownItem from "../common/dropdown/DropdownItem";
 
@@ -7,7 +7,7 @@ function DropdownMenu() {
 
   const handleClick = (event) => {
     event.stopPropagation();
-    setDropdown(!dropdown)
+    setDropdown(!dropdown);
   };
 
   return (
@@ -16,15 +16,9 @@ function DropdownMenu() {
         <i className="material-icons">more_horiz</i>
       </button>
       <Dropdown open={dropdown}>
-        <DropdownItem>
-          Delete
-        </DropdownItem>
-        <DropdownItem>
-          Archive
-        </DropdownItem>
-        <DropdownItem>
-          Edit
-        </DropdownItem>
+        <DropdownItem>Delete</DropdownItem>
+        <DropdownItem>Archive</DropdownItem>
+        <DropdownItem>Edit</DropdownItem>
       </Dropdown>
     </div>
   );

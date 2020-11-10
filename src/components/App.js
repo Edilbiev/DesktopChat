@@ -1,22 +1,42 @@
 import React, { useEffect } from "react";
-import Sidebar from "./left/Sidebar";
-import ChatWindow from "./center/ChatWindow";
+import Sidebar from "./sidebar/Sidebar";
+import ChatWindow from "./chat/ChatWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { contactsLoaded, profileLoaded } from "../redux/actions";
-import SettingsBar from "./right/SettingsBar";
-import { useParams } from "react-router-dom";
+import ProfileBar from "./profile/ProfileBar";
+import {CSSTransition} from "react-transition-group";
+import GitHub from "./common/GitHub/GitHub";
+import dayjs from "dayjs";
+import updateLocale from "dayjs/plugin/updateLocale";
 
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.profile.loading);
-  const opened = useParams().id;
+  const loading2 = useSelector((state) => state.contacts.loading);
+  const settingsBarOpened = useSelector(
+    (state) => state.application.settingsBarOpened
+  );
+
+  dayjs.extend(updateLocale);
+  dayjs.updateLocale("en", {
+    weekdays: [
+      "Воскресенье",
+      "Понедельник",
+      "Вторник",
+      "Среда",
+      "Четверг",
+      "Пятница",
+      "Суббота",
+    ],
+  });
+
 
   useEffect(() => {
     dispatch(contactsLoaded());
     dispatch(profileLoaded());
   }, [dispatch]);
 
-  if (loading) {
+  if (loading || loading2) {
     return null;
   }
 
@@ -24,7 +44,15 @@ function App() {
     <div className="app">
       <Sidebar />
       <ChatWindow />
-      <SettingsBar />
+      <CSSTransition
+        in={settingsBarOpened}
+        timeout={300}
+        classNames="transition"
+        unmountOnExit
+      >
+        <ProfileBar />
+      </CSSTransition>
+      <GitHub />
     </div>
   );
 }

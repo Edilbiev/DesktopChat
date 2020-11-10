@@ -1,4 +1,6 @@
 export function scrollChatToBottom() {
   const chatWindow = document.getElementById("chat-window");
-  chatWindow.scrollTop = chatWindow.scrollHeight;
+  if(chatWindow) {
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
 }

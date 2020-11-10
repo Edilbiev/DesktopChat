@@ -29,9 +29,9 @@ export default function chat(state = initialState, action) {
           ...state.items,
           {
             ...action.payload,
-            sending: true
-          }
-        ]
+            sending: true,
+          },
+        ],
       };
 
     case "message/send/succeed":
@@ -39,9 +39,9 @@ export default function chat(state = initialState, action) {
 
       return {
         ...state,
-        items: state.items.map(item => {
-          if(item.nextTempId === nextTempId) {
-            return action.payload
+        items: state.items.map((item) => {
+          if (item.nextTempId === nextTempId) {
+            return action.payload;
           }
 
           return item;
@@ -52,14 +52,14 @@ export default function chat(state = initialState, action) {
       return {
         ...state,
         deleting: true,
-      }
+      };
 
     case "message/delete/succeed":
       return {
         ...state,
         deleting: false,
         items: action.payload,
-      }
+      };
 
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function OnlineIndicator( {customClass} ) {
+function OnlineIndicator({ customClass }) {
   return <div className={customClass} />;
 }
 

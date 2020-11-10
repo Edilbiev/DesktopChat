@@ -9,14 +9,12 @@ import "./styles.css";
 import { BrowserRouter, Route } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Route path='/:id?'>
+        <Route path="/:id?">
           <App />
         </Route>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById("root")
 );

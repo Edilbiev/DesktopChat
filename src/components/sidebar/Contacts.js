@@ -1,13 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Contact from "./Contact";
 import SkeletonList from "../common/skeletons/SkeletonList";
-import moment from "moment";
-import {useParams} from "react-router-dom";
+import Contact from "./Contact";
+import dayjs from "dayjs";
 
-function RecentChats() {
-
-  console.log(useParams())
+function Contacts() {
   const items = useSelector(({ application, contacts }) => {
     const { contactSearchString } = application;
     return contacts.items.filter(({ fullname }) => {
@@ -18,9 +15,7 @@ function RecentChats() {
   });
 
   const itemsSortedByTime = items.sort((a, b) => {
-    return (
-      a.lastMessage && moment(b.lastMessage.time) - moment(a.lastMessage.time)
-    );
+    return dayjs(b.lastMessage?.time) - dayjs(a.lastMessage?.time);
   });
 
   const loading = useSelector((state) => state.contacts.loading);
@@ -28,8 +23,8 @@ function RecentChats() {
   return loading ? (
     <SkeletonList />
   ) : (
-    itemsSortedByTime.map((item) => <Contact key={item._id} item={item} />)
+    itemsSortedByTime.map((item) => <Contact key={item._id} {...item} />)
   );
 }
 
-export default RecentChats;
+export default Contacts;

@@ -1,17 +1,16 @@
-import {scrollChatToBottom} from "../utils/dom";
+import { scrollChatToBottom } from "../utils/dom";
+import { del, get, post } from "../api/api";
 
 export function profileLoaded() {
   return (dispatch) => {
     dispatch({ type: "profile/load/started" });
 
-    fetch("http://151.248.117.7:8001/api/profile")
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: "profile/load/succeed",
-          payload: json,
-        });
+    get("/profile").then((json) => {
+      dispatch({
+        type: "profile/load/succeed",
+        payload: json,
       });
+    });
   };
 }
 
@@ -19,14 +18,12 @@ export function contactsLoaded() {
   return (dispatch) => {
     dispatch({ type: "contacts/load/started" });
 
-    fetch("http://151.248.117.7:8001/api/contacts")
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: "contacts/load/success",
-          payload: json,
-        });
+    get("/contacts").then((json) => {
+      dispatch({
+        type: "contacts/load/success",
+        payload: json,
       });
+    });
   };
 }
 
@@ -37,27 +34,25 @@ export function chatLoaded(myId, contactId) {
       payload: contactId,
     });
 
-    fetch(`http://151.248.117.7:8001/api/messages/${myId}/${contactId}`)
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: "chat/load/success",
-          payload: json,
-        });
-
-        scrollChatToBottom()
+    get(`/messages/${myId}/${contactId}`).then((json) => {
+      dispatch({
+        type: "chat/load/success",
+        payload: json,
       });
+
+      scrollChatToBottom();
+    });
   };
 }
 
 function messageSentBegin(messageObject, nextTempId) {
   return {
-    type: 'message/send/started',
+    type: "message/send/started",
     payload: {
       ...messageObject,
-      nextTempId
-    }
-  }
+      nextTempId,
+    },
+  };
 }
 
 export function messageSent(messageObject) {
@@ -68,49 +63,31 @@ export function messageSent(messageObject) {
 
     scrollChatToBottom();
 
-    fetch("http://151.248.117.7:8001/api/messages", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messageObject),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: "message/send/succeed",
-          payload: {
-            ...json,
-            nextTempId
-          }
-        });
+    post("/messages", messageObject).then((json) => {
+      dispatch({
+        type: "message/send/succeed",
+        payload: {
+          ...json,
+          nextTempId,
+        },
       });
+    });
   };
 }
 
 export function messageDeleted(id) {
   return (dispatch) => {
     dispatch({
-      type: "message/delete/started"
-    })
+      type: "message/delete/started",
+    });
 
-    fetch("http://151.248.117.7:8001/api/messages", {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(id),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: "message/delete/succeed",
-          payload: json,
-        })
-      })
-  }
+    del("/messages", id).then((json) => {
+      dispatch({
+        type: "message/delete/succeed",
+        payload: json,
+      });
+    });
+  };
 }
 
 export function contactSearchStringSet(value) {
@@ -128,14 +105,14 @@ export function messageSearchStringHandled() {
 
 export function messageSearchStringClosed() {
   return {
-    type: "message/search/closed"
-  }
+    type: "message/search/closed",
+  };
 }
 
 export function messageSearchStringCleared() {
   return {
-    type: "message/search/cleared"
-  }
+    type: "message/search/cleared",
+  };
 }
 
 export function messageSearchStringSet(value) {
