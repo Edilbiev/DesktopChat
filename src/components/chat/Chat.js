@@ -13,6 +13,7 @@ function Chat() {
     );
   });
   const chatLoading = useSelector((state) => state.chat.loading);
+
   if (chatLoading) {
     return null
   }

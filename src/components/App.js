@@ -11,8 +11,8 @@ import updateLocale from "dayjs/plugin/updateLocale";
 
 function App() {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.profile.loading);
-  const loading2 = useSelector((state) => state.contacts.loading);
+  const profileLoading = useSelector((state) => state.profile.loading);
+  const contactsLoading = useSelector((state) => state.contacts.loading);
   const settingsBarOpened = useSelector(
     (state) => state.application.settingsBarOpened
   );
@@ -36,7 +36,7 @@ function App() {
     dispatch(profileLoaded());
   }, [dispatch]);
 
-  if (loading || loading2) {
+  if (profileLoading || contactsLoading) {
     return null;
   }
 

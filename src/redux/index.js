@@ -6,6 +6,14 @@ import chat from "./reducers/chat";
 import profile from "./reducers/profile";
 import application from "./reducers/application";
 
+let middlewares;
+
+if (process.env.NODE_ENV === "development") {
+  middlewares = applyMiddleware(logger, thunk);
+} else {
+  middlewares = applyMiddleware(thunk);
+}
+
 const reducer = combineReducers({ contacts, chat, profile, application });
 
-export const store = createStore(reducer, applyMiddleware(thunk, logger));
+export const store = createStore(reducer, middlewares);
